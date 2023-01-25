@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
-@EnableJpaAuditing
+@EnableJpaAuditing  // @CreateDate @LastmodifiedDate 자동으로 값을 세팅해준다.
 public class DmakerApplication {
 
 	public static void main(String[] args) {
