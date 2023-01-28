@@ -21,6 +21,7 @@ public class DMakerService {
     private final EntityManager em;
     @Transactional
     public void createDeveloper(CreateDeveloper.Request request) {
+            validateCreateDeveloperRequest(request);
             //business logic start
             Developer developer = Developer.builder()
                     .developerLevel(DeveloperLevel.JUNIOR)
@@ -36,6 +37,15 @@ public class DMakerService {
 //            // B 계좌에서 1만원 늘림
 //            developerRepository.delete(developer1);
 //            //business logic end
+    }
+
+    private void validateCreateDeveloperRequest(CreateDeveloper.Request request) {
+        //business validation
+        //개발하는 어플리케이션에서 요구하는 커스텀 exception을 정해주는 것이 좋다.
+        if(request.getDeveloperLevel() == DeveloperLevel.SENIOR
+            && request.getExperienceYears() < 10) {
+            throw  new RuntimeException("SENIOR need 10 years experience");
+        }
     }
 
 }
