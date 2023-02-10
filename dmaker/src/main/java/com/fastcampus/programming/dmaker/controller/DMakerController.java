@@ -34,14 +34,12 @@ public class DMakerController {
 
     // 일반적으로 새로운 resource 만들때는 POST 사용한다.
     @PostMapping("/create-developer")
-    public List<String> createDevelopers(
+    public CreateDeveloper.Response createDevelopers(
             // 자바빈 Validation을 동작하게 @Valid 추가
             @Valid @RequestBody CreateDeveloper.Request request
             ) {
         log.info("request : {}",request);
 
-        dMakerService.createDeveloper(request);
-
-        return Collections.singletonList("Olaf");
+        return dMakerService.createDeveloper(request);
     }
 }
